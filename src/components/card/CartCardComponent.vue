@@ -1,14 +1,12 @@
 <script>
 export default {
-    name: 'card-component',
+    name: 'cart-card-component',
     props: ['product'],
-    setup() {
-    }
 }
 </script>
 <template>
     <div class="col d-flex justify-content-center mb-3">
-        <div class="card h-100" style="width: 36rem; height: 20rem;">
+        <div class="card h-100" style="width: 18rem; height: 10rem;">
             <div class="row align-items-center p-2">
                 <div class="col-md-4">
                     <img :src=this.product._source.image class="card-img" alt="...">
@@ -16,7 +14,8 @@ export default {
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ this.product._source.title }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ this.product._source.description }}</small></p>
+                        <h6 class="card-title">{{ this.product._source.brand }}</h6>
+                        <p class="card-text"><small class="text-muted">{{ this.product._source.category }}</small></p>
                         <p class="card-text">{{ this.product._source.price }}</p>
                     </div>
                 </div>
