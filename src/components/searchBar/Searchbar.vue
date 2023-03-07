@@ -12,6 +12,7 @@ export default {
   },
   methods: {
     keystroke() {
+      console.log(this.$store.getters.getProducts);
       this.query.length > 0 ? this.search() : this.reset();
     },
     search() {

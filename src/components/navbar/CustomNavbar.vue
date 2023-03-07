@@ -1,7 +1,6 @@
 <script>
 import { ref } from 'vue';
 import Searchbar from '../searchBar/Searchbar.vue';
-import { mapGetters } from "vuex"
 
 export default {
     name: 'custom-navbar',
@@ -18,11 +17,6 @@ export default {
             this.$emit('updatedData', res);
         }
     },
-    computed: {
-        ...mapGetters([
-            'cartQuantity'
-        ])
-    },
 }
 </script>
 <template>
@@ -37,6 +31,9 @@ export default {
                 <search-bar @updatedData="(res) => this.updateParentProductLIst(res)" />
             </div>
             <div class="col col-lg-2">
+                <a>
+                    <font-awesome-icon icon="fa-solid fa-cart-shopping" size="xl" href=""/>
+                </a>
             </div>
         </div>
     </div>

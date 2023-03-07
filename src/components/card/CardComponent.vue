@@ -1,25 +1,37 @@
 <script>
+import PushToCartComponent from './PushToCartComponent.vue';
+import { useStore } from 'vuex';
 export default {
+    setup() {
+        const store = useStore()
+        let cartProducts = store.state.cartProducts
+
+        return {
+            cartProducts
+        }
+    },
     name: 'card-component',
     props: ['product'],
-    setup() {
+    components: {
+        'push-to-cart-component': PushToCartComponent
+    },
+    computed: {
     }
 }
 </script>
 <template>
-    <div class="col d-flex justify-content-center mb-3">
-        <div class="card h-100" style="width: 36rem; height: 20rem;">
-            <div class="row align-items-center p-2">
-                <div class="col-md-4">
-                    <img :src=this.product._source.image class="card-img" alt="...">
+    <div class="col-md-4 col-sm-6">
+        <div class="card mt-4">
+            <a class="card-img-tiles text-center mt-4" href="#" data-abc="true">
+                <div class="inner">
+                    <div class="main-img"><img :src=this.product._source.image alt="Category"></div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ this.product._source.title }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ this.product._source.description }}</small></p>
-                        <p class="card-text">{{ this.product._source.price }}</p>
-                    </div>
-                </div>
+            </a>
+            <div class="card-body text-center">
+                <h4 class="card-title">{{ this.product._source.title }}</h4>
+                <h4 class="card-title">{{ $store.state.cartProducts }}</h4>
+                <p class="text-muted mb-2">{{ cartProducts }} $</p>
+                <push-to-cart-component :product="product" />
             </div>
         </div>
     </div>

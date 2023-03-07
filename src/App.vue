@@ -1,7 +1,7 @@
 <template>
-  <custom-navbar @updatedData="(res) => this.products = res"/>
-  <div id="app" class="container mt-4">
-    <div v-if="this.products.value != 0" class="mt-4 row">
+  <custom-navbar @updatedData="(res) => this.products = res" />
+  <div id="app" class="container mt-100">
+    <div class="row" v-if="this.products.value != 0">
       <card-component v-for="(value, index) in this.products" :key="index" :product=value />
     </div>
   </div>
@@ -10,8 +10,8 @@
 <script>
 import CustomNavbar from '@/components/navbar/CustomNavbar.vue';
 import CardComponent from '@/components/card/CardComponent.vue';
-import { ref } from 'vue';
 import axios from 'axios';
+import { ref } from 'vue';
 
 export default {
   data() {
